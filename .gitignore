@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.vscode/
+.idea/
+*.log
+
+
+funcs1.txt
+intro.txt
+later.txt
