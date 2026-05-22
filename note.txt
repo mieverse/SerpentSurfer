@@ -1,9 +1,25 @@
-# IMPORTS
-# GLOBAL VARIABLE
-# TEXT FUNCTION
-# KEYBOARD, MOUSE, SPECIAL KEYS INPUT 
+Drawing:
 
-# CAMERA
-# INTRO SCREEN
-# RENDER
-# MAIN
+drawText, begin2D, end2D, drawQuad2D, drawTriangle2D, 
+drawCircle2D, drawBar2D, setupCamera, drawGrid, drawFood, 
+drawSnakeHead, trailPos, drawSnakeBody, drawEnemy, drawEnemy2, 
+drawObstacleCubes, drawSpeedPotions, drawMagnetPotions, 
+drawMysteryOrbs, drawMimicFood, drawRotZones, drawComboBanner, 
+drawDisplay, drawIntro, drawInstructions, drawChooseSerpent, 
+drawPreviewHead3D, drawArrowLeft, drawArrowRight, drawDotIndicators, 
+drawLevelupMutation, drawGameOver, drawGame
+
+Game Logic:
+
+spawnFood, initFood, spawnSpeedPotion, spawnMysteryOrb, spawnMagnetPotion, 
+spawnObstacleCube, spawnMimic, spawnRotZones, resetGame, advanceLevel, 
+shedBody, hitsCube, recordPos, angleToTarget, tryKnockback, moveEnemy
+
+Event Handlers:
+
+keyboardListener, specialKeyListener, mouseListener, 
+hitTest, introClick, instructClick, chooseClick
+
+Core:
+
+idle, showScreen, main
