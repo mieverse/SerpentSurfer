@@ -1,7 +1,6 @@
 # 🐍 Serpent Surfer
 
 > **CSE423: Computer Graphics** | BRAC University | Spring 2026  
-> Group 03 | Section 14
 
 ---
 ## 👥 Team Members
@@ -52,3 +51,14 @@ pip install PyOpenGL PyOpenGL_accelerate
 
 python project.py
 ```
+## 🎮 Gameplay Preview
+
+<p align="center">
+  <img src="images/1.jpg" width="45%">
+  <img src="images/2.jpg" width="45%">
+</p>
+
+<p align="center">
+  <img src="images/3.jpg" width="45%">
+  <img src="images/4.jpg" width="45%">
+</p>
