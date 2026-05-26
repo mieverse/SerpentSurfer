@@ -19,7 +19,7 @@
 
 ### Files
 - `project.py` → Final submitted version
-- `gamev2.py` → Experimental version with additional gameplay modifications *(WIP)*
+- `version2.py` → Experimental version with additional gameplay modifications *(WIP)*
 
 ---
 

@@ -61,8 +61,8 @@ knockback_speed = 1.2
 
 speed_potions = []
 speed_boost_end = 0.0
-boost_speed = 20
-normal_speed = 10
+boost_speed = 7
+normal_speed = 3
 potion_spawn_timer = 0
 
 magnet_potions = []
@@ -553,7 +553,8 @@ def drawDisplay():
         drawText(WINDOW_W - 270, 30, f"MUTATION: {mutation.upper()}")
 
     glColor3f(0.3, 0.5, 0.6)
-    drawText(10, 10, "A/D = turn  SPACE = knockback  Arrows = camera  ESC = menu")
+    drawText(10, 10, "A/D=turn  SPACE=knockback  ESC=menu")
+
     next_need = level_score[min(current_level + 1, 3)] if current_level < 3 else 999
     glColor3f(0.3, 0.5, 0.6)
     drawText(10, 30, f"Next level at score {next_need}")
@@ -1080,16 +1081,15 @@ def keyboardListener(key, x, y):
             current_screen = "game"
         glutPostRedisplay()
         return
-
+    
     if current_screen == "game" and not game_over and not game_won:
         if key == b'a':
             snake_angle += 5
         if key == b'd':
             snake_angle -= 5
-
         if key == b' ':
             tryKnockback()
-
+    
     if current_screen == "game" and (game_over or game_won):
         if key == b'r':
             resetGame()
@@ -1228,25 +1228,20 @@ def idle():
 
     bob_time += 0.04
 
-    # ========
-    if not game_over and not game_won and current_screen == "game":
-        slowdown = 0.9 if mutation == "titan" else 1.0
-        cur_speed = (boost_speed if time.time() < speed_boost_end else normal_speed) * slowdown
+    slowdown = 0.9 if mutation == "titan" else 1.0
+    cur_speed = normal_speed * slowdown
+    if time.time() < speed_boost_end:
+        cur_speed = boost_speed * slowdown
 
-        nx = snake_pos[0] - cur_speed * math.sin(math.radians(snake_angle))
-        ny = snake_pos[1] + cur_speed * math.cos(math.radians(snake_angle))
+    nx = snake_pos[0] - cur_speed * math.sin(math.radians(snake_angle))
+    ny = snake_pos[1] + cur_speed * math.cos(math.radians(snake_angle))
 
-        if abs(nx) >= effective_boundary - 20 or abs(ny) >= effective_boundary - 20:
-            shedBody()
-        elif hitsCube(nx, ny):
-            # cube blocked: don't move this frame (player must steer around it)
-            pass
-        else:
-            recordPos()
-            snake_pos[0] = nx
-            snake_pos[1] = ny
-
-    # ========
+    if abs(nx) >= effective_boundary - 20 or abs(ny) >= effective_boundary - 20:
+        shedBody()
+    elif not hitsCube(nx, ny):
+        recordPos()
+        snake_pos[0] = nx
+        snake_pos[1] = ny
 
     health = max(0, health - health_drain)
     if health <= 0:
